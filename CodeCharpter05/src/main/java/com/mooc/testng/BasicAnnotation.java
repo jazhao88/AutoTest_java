@@ -5,10 +5,12 @@ import org.testng.annotations.*;
 public class BasicAnnotation {
     @Test
     public void testCase01(){
+        System.out.printf("\ntestCase01TreadId:%s\n",Thread.currentThread().getId());
         System.out.println("这是测试用例01");
     }
     @Test
     public void testCase02(){
+        System.out.printf("\ntestCase01TreadId:%s\n",Thread.currentThread().getId());
         System.out.println("这是测试用例02");
     }
     @BeforeMethod
