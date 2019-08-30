@@ -1,0 +1,80 @@
+[
+  {
+    "description": "模拟一个post请求",
+    "request": {
+      "uri": "/postDemo",
+      "method": "post"
+    },
+    "response": {
+      "text": "这是我的第一个moco的post请求",
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  },
+  {
+    "description": "模拟一个带参数的post请求",
+    "request": {
+      "uri": "/postWithParam",
+      "method": "post",
+      "forms": {
+        "name": "huhansan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "text": "胡汉三的带参post请求来了",
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  },
+  {
+    "description": "这是一个带cookie的post请求",
+    "request": {
+      "uri": "/post/with/cookie",
+      "method": "post",
+      "cookies": {
+        "login": "true"
+      },
+      "json": {
+        "name": "huhansan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "status": 200,
+      "json": {
+        "huhansan": "success",
+        "status": 1
+      },
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  },
+  {
+    "description": "这是一个带header的post请求",
+    "request": {
+      "uri": "/post/with/header",
+      "method": "post",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "json": {
+        "name": "wanglaosi",
+        "sex": "woman"
+      }
+    },
+    "response": {
+      "status": 200,
+      "json": {
+        "wanglaoshi": "success",
+        "status": 1
+      },
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  }
+]
