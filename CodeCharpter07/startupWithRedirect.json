@@ -18,7 +18,7 @@
     "request": {
       "uri": "/redirect/new"
     },
-    "response": {
+    "responses1": {
       "text": "redirect sucess"
     }
   }

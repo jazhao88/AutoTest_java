@@ -28,21 +28,5 @@
         "Content-Type": "text/html;charset=gbk"
       }
     }
-  },
-  {
-    "description": "这是一个带cookie的get请求",
-    "request": {
-      "uri": "/get/with/cookie",
-      "method": "get",
-      "cookies": {
-        "login": "true"
-      }
-    },
-    "response": {
-      "text": "这是一个带cookie的get请求",
-      "headers": {
-        "Content-Type": "text/html;charset=gbk"
-      }
-    }
   }
 ]

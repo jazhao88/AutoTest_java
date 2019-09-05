@@ -1,0 +1,61 @@
+[
+  {
+    "description": "这是一个带cookie的get请求",
+    "request": {
+      "uri": "/get/with/cookie",
+      "method": "get",
+      "cookies": {
+        "login": "true"
+      }
+    },
+    "response": {
+      "text": "这是一个带cookie的get请求",
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  },
+  {
+    "description": "这是一个返回cookie的get请求",
+    "request": {
+      "uri": "/getCookie",
+      "method": "get"
+    },
+    "response": {
+      "text": "恭喜你获得cookie成功",
+      "cookies": {
+        "login": "true"
+      },
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  },
+  {
+    "description": "这是一个带cookie的post请求",
+    "request": {
+      "uri": "/post/with/cookie",
+      "method": "post",
+      "cookies": {
+        "login": "true"
+      },
+      "headers": {
+        "content-type": "application/json"
+      },
+      "json": {
+        "name": "huhansan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "status": 200,
+      "json": {
+        "huhansan": "success",
+        "status": 1
+      },
+      "headers": {
+        "Content-Type": "text/html;charset=gbk"
+      }
+    }
+  }
+]
