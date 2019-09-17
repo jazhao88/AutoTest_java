@@ -30,6 +30,8 @@
         <module>CodeCharpter06</module>
         <module>CodeCharpter09</module>
         <module>CodeCharpter10</module>
+        <module>CodeCharpter11</module>
+        <module>CodeCharpter12</module>
     </modules>
 
 </project>

@@ -10,6 +10,8 @@
         <module name="CodeCharpter06" />
         <module name="CodeCharpter09" />
         <module name="CodeCharpter10" />
+        <module name="CodeCharpter11" />
+        <module name="CodeCharpter12" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,12 +23,16 @@
       <module name="CodeCharpter061" target="1.8" />
       <module name="CodeCharpter09" target="1.5" />
       <module name="CodeCharpter10" target="1.8" />
+      <module name="CodeCharpter11" target="1.8" />
+      <module name="CodeCharpter12" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CodeCharpter06" options="-parameters" />
       <module name="CodeCharpter10" options="-parameters" />
+      <module name="CodeCharpter11" options="-parameters" />
+      <module name="CodeCharpter12" options="-parameters" />
       <module name="_01" options="-parameters" />
     </option>
   </component>
