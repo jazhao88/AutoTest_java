@@ -12,6 +12,7 @@
         <module name="CodeCharpter10" />
         <module name="CodeCharpter11" />
         <module name="CodeCharpter12" />
+        <module name="CodeCharpter13" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,6 +26,7 @@
       <module name="CodeCharpter10" target="1.8" />
       <module name="CodeCharpter11" target="1.8" />
       <module name="CodeCharpter12" target="1.8" />
+      <module name="CodeCharpter13" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -33,6 +35,7 @@
       <module name="CodeCharpter10" options="-parameters" />
       <module name="CodeCharpter11" options="-parameters" />
       <module name="CodeCharpter12" options="-parameters" />
+      <module name="CodeCharpter13" options="-parameters" />
       <module name="_01" options="-parameters" />
     </option>
   </component>

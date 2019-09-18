@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "v1",description = "这是我的第一个版本的demo")
 @RequestMapping("v1")
 public class Demo {
+
     @Autowired
     private SqlSessionTemplate template;
-
     @RequestMapping(value = "/getUserCount",method = RequestMethod.GET)
     @ApiOperation(value = "可以获取到用户数",httpMethod = "GET")
     public int getUserCount(){
-        return template.selectOne("getUserCount");
+        return template.selectOne("com.course.getUserCount");
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)

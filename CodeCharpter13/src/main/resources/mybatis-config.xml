@@ -4,10 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <package name="com.course.model"/>
+        <package name="com.code.model"/>
     </typeAliases>
     <mappers>
         <mapper resource="mapper/mysql.xml"/>
-
     </mappers>
 </configuration>
