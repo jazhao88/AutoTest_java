@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class GetUserInfoCase {
-    private int userId;
+    private Integer userId;
     private String expected;
 }

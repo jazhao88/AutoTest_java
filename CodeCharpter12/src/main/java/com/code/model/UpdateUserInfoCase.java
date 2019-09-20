@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class UpdateUserInfoCase {
-    private int id;
-    private int userId;
+    private Integer id;
+    private Integer userId;
     private String userName;
-    private int sex;
-    private int age;
-    private int permission;
-    private int isDelete;
+    private Integer sex;
+    private Integer age;
+    private Integer permission;
+    private Integer isDelete;
     private String expected;
 }

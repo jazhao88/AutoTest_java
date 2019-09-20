@@ -6,8 +6,7 @@ import com.code.model.AddUserCase;
 import com.code.utils.ClientUtil;
 import com.code.utils.DataBaseUtil;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 
 public class AddUserTest {
     @Test(dependsOnGroups = "loginTrue",description = "添加用户接口测试")
-    public void addUser() throws IOException {
+    public void addUser() throws IOException, InterruptedException {
         SqlSession session = DataBaseUtil.getSqlSession();
         AddUserCase addUserCase = session.selectOne("addUserCase",5);
         if (addUserCase != null) {
@@ -31,6 +30,7 @@ public class AddUserTest {
         //发请求，获取结果
         String result = getResult(addUserCase);
         System.out.println(result);
+        Thread.sleep(2000);
         //查询用户看是否添加成功
         User user = session.selectOne("addUser",addUserCase);
         System.out.println(user.toString());
@@ -51,8 +51,7 @@ public class AddUserTest {
         HashMap<String,String> headerMap = new HashMap<String,String>();
         headerMap.put("Content-Type","application/json");
         //执行接口
-        CloseableHttpResponse response = ClientUtil.post(TestConfig.addUserUrl,param.toString(),headerMap);
-        String result = response.toString();
+        String result = ClientUtil.post(TestConfig.addUserUrl,param.toString(),headerMap);
         return result;
     }
 }

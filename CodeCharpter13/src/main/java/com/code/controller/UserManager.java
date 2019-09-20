@@ -60,6 +60,7 @@ public class UserManager {
     public List<User>getUserInfo(HttpServletRequest request, @RequestBody User user){
         Boolean x = verifyCookies(request);
         if (x == true){
+            System.out.println("user===" + user.getSex());
             List<User>users = template.selectList("getUserInfo",user);
             log.info("getUserInfo获取到的用户数量是",users.size());
             return users;

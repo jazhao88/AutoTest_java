@@ -34,14 +34,12 @@
     </appender>
 
 
-    <logger name="com.business.intelligence.util.CrawlerLogger" level="INFO" additivity="false">
+    <!--logger name="com.business.intelligence.util.CrawlerLogger" level="INFO" additivity="false">
         <appender-ref ref="CRAWLER_LOG"/>
-    </logger>
-
-    <root level="INFO">
+    </logger-->
+    <logger name="java.sql.Statement" level="DEBUG" />
+    <root level="debug">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>
-
-
 </configuration>

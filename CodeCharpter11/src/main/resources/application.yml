@@ -18,3 +18,6 @@ mybatis:
   type-aliases-package: com.course.model
   mapper-locations:
     - mapper/*
+  configuration:
+    log-impl: org.apache.ibatis.logging.jdk14.Jdk14LoggingImpl
+    log-prefix: zyl

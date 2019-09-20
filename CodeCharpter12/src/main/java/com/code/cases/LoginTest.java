@@ -64,8 +64,7 @@ public class LoginTest {
         HashMap<String,String> headerMap = new HashMap<String,String>();
         headerMap.put("Content-Type","application/json");
         //执行接口
-        CloseableHttpResponse response = ClientUtil.post(TestConfig.loginUrl,param.toString(),headerMap);
-        String result = EntityUtils.toString(response.getEntity(),"utf-8");
+        String result = ClientUtil.post(TestConfig.loginUrl,param.toString(),headerMap);
         return result;
     }
 }

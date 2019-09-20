@@ -7,7 +7,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
+import javax.swing.text.html.parser.Entity;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,12 +23,13 @@ public class ClientUtil {
      * @param url
      * @return 返回响应对象
      */
-    public static CloseableHttpResponse get(String url) throws IOException {
+    public static String get(String url) throws IOException {
         //创建一个HttpGet的请求对象
         HttpGet httpGet= new HttpGet(url);
         //执行请求
         CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-        return httpResponse;
+        String result = EntityUtils.toString(httpResponse.getEntity(),"utf-8");
+        return result;
     }
 
     /**
@@ -36,7 +39,7 @@ public class ClientUtil {
      * @return 返回响应对象
      * @throws IOException
      */
-    public static CloseableHttpResponse get(String url, HashMap<String,String> headerMap) throws IOException {
+    public static String get(String url, HashMap<String,String> headerMap) throws IOException {
         //创建一个HttpGet的请求对象
         HttpGet httpGet= new HttpGet(url);
         //加载请求头到httpget对象
@@ -45,9 +48,10 @@ public class ClientUtil {
         }
         //执行请求
         CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-        return httpResponse;
+        String result = EntityUtils.toString(httpResponse.getEntity(),"utf-8");
+        return result;
     }
-    public static CloseableHttpResponse post(String url, String entityString, HashMap<String,String> headerMap) throws IOException {
+    public static String post(String url, String entityString, HashMap<String,String> headerMap) throws IOException {
         //创建一个HttpPost的请求对象
         HttpPost httpPost= new HttpPost(url);
         //设置参数
@@ -59,6 +63,7 @@ public class ClientUtil {
         }
         //执行请求
         CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
-        return httpResponse;
+        String result = EntityUtils.toString(httpResponse.getEntity(),"utf-8");
+        return result;
     }
 }

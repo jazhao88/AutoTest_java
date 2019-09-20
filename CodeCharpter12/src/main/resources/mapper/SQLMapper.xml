@@ -33,4 +33,20 @@
         and permission=#{permission}
         and isDelete=#{isDelete}
     </select>
+    <!--获取用户列表-->
+    <select id="getUserList" parameterType="com.code.model.GetUserListCase" resultType="com.code.model.User">
+        <!-- SQL语句 -->
+        select * from user
+        <where>
+            <if test='null != userName and "" !=userName'>
+                AND userName=#{userName}
+            </if>
+            <if test='null != sex'>
+                AND sex=#{sex}
+            </if>
+            <if test='null != age'>
+                AND age=#{age}
+            </if>
+        </where>
+    </select>
 </mapper>
