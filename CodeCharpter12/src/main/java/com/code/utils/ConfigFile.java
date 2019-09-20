@@ -1,6 +1,6 @@
 package com.code.utils;
 
-import com.code.InterfaceName;
+import com.code.model.InterfaceName;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

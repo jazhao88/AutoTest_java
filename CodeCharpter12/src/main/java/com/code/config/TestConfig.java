@@ -9,7 +9,4 @@ public class TestConfig {
     public static String getUserListUrl;
     public static String getUserInfoUrl;
     public static String addUserUrl;
-
-    public static CloseableHttpClient client;
-    public static CookieStore store;
 }

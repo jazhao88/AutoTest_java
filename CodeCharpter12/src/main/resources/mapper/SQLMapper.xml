@@ -3,23 +3,34 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.code.model">
     <!-- 获取登录接口case -->
-    <select id="loginCase" parameterType="Integer" resultType="com.code.LoginCase">
+    <select id="loginCase" parameterType="Integer" resultType="com.code.model.LoginCase">
         select * from loginCase where id=#{id}
     </select>
     <!-- 添加用户接口case -->
-    <select id="addUserCase" parameterType="Integer" resultType="com.code.AddUserCase">
+    <select id="addUserCase" parameterType="Integer" resultType="com.code.model.AddUserCase">
         select * from addUserCase where id = #{id}
     </select>
     <!-- 获取用户信息case -->
-    <select id="getUserInfoCase" parameterType="Integer" resultType="com.code.GetUserInfoCase">
+    <select id="getUserInfoCase" parameterType="Integer" resultType="com.code.model.GetUserInfoCase">
         select * from getUserInfoCase where id = #{id}
     </select>
     <!-- 获取用户列表case -->
-    <select id="getUserListCase" parameterType="Integer" resultType="com.code.GetUserListCase">
+    <select id="getUserListCase" parameterType="Integer" resultType="com.code.model.GetUserListCase">
         select * from getUserListCase where id = #{id}
     </select>
     <!-- 更新/删除用户case -->
-    <select id="updateUserInfoCase" parameterType="Integer" resultType="com.code.UpdateUserInfoCase">
+    <select id="updateUserInfoCase" parameterType="Integer" resultType="com.code.model.UpdateUserInfoCase">
         select * from updateUserCase where id = #{id}
+    </select>
+
+    <!--添加用户接口-->
+    <select id="addUser" parameterType="com.code.model.AddUserCase" resultType="com.code.model.User">
+        select * from user where
+        userName=#{userName}
+        and password=#{password}
+        and sex=#{sex}
+        and age=#{age}
+        and permission=#{permission}
+        and isDelete=#{isDelete}
     </select>
 </mapper>

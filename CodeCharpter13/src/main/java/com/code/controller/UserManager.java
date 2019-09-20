@@ -29,7 +29,7 @@ public class UserManager {
 
     @ApiOperation(value = "登录接口",httpMethod = "POST")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public Boolean login(HttpServletResponse response, @RequestBody User user){
+    public boolean login(HttpServletResponse response, @RequestBody User user){
         int i = template.selectOne("login",user);
         Cookie cookie = new Cookie("login","true");
         response.addCookie(cookie);
@@ -79,7 +79,7 @@ public class UserManager {
         return i;
     }
 
-    private Boolean verifyCookies(HttpServletRequest request){
+    private boolean verifyCookies(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         if (Objects.isNull(cookies)){
             log.info("cookies为空");

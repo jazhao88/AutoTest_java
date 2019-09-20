@@ -1,7 +1,7 @@
 package com.code.cases;
 
 import com.code.config.TestConfig;
-import com.code.GetUserListCase;
+import com.code.model.GetUserListCase;
 import com.code.utils.DataBaseUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
