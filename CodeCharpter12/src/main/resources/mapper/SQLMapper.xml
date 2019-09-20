@@ -25,13 +25,27 @@
 
     <!--添加用户接口-->
     <select id="addUser" parameterType="com.code.model.AddUserCase" resultType="com.code.model.User">
-        select * from user where
-        userName=#{userName}
-        and password=#{password}
-        and sex=#{sex}
-        and age=#{age}
-        and permission=#{permission}
-        and isDelete=#{isDelete}
+        select * from user
+        <where>
+            <if test='null != userName and "" !=userName'>
+                AND userName=#{userName}
+            </if>
+            <if test='null != password and "" !=password'>
+                AND password=#{password}
+            </if>
+            <if test='null != sex'>
+                AND sex=#{sex}
+            </if>
+            <if test='null != age'>
+                AND age=#{age}
+            </if>
+            <if test='null != permission'>
+                AND permission=#{permission}
+            </if>
+            <if test='null != isDelete'>
+                AND isDelete=#{isDelete}
+            </if>
+        </where>
     </select>
     <!--获取用户列表-->
     <select id="getUserList" parameterType="com.code.model.GetUserListCase" resultType="com.code.model.User">
