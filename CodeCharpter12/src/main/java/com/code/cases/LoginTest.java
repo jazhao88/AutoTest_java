@@ -6,8 +6,6 @@ import com.code.model.LoginCase;
 import com.code.utils.ClientUtil;
 import com.code.utils.ConfigFile;
 import com.code.utils.DataBaseUtil;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.testng.Assert;

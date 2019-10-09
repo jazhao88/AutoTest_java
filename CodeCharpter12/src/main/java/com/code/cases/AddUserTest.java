@@ -5,8 +5,6 @@ import com.code.config.TestConfig;
 import com.code.model.AddUserCase;
 import com.code.utils.ClientUtil;
 import com.code.utils.DataBaseUtil;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -30,8 +28,10 @@ public class AddUserTest {
         //发请求，获取结果
         String result = getResult(addUserCase);
         System.out.println(result);
-        Thread.sleep(2000);
-        //查询用户看是否添加成功
+
+        //验证数据
+        Thread.sleep(6000);
+        session.clearCache();
         User user = session.selectOne("addUser",addUserCase);
         System.out.println(user.toString());
         //处理结果，就是判断返回结果是否符合预期

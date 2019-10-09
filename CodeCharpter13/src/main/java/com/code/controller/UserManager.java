@@ -35,7 +35,7 @@ public class UserManager {
         response.addCookie(cookie);
         log.info("查询到的结果是" + i );
         if(i==1){
-            log.info("查询到的登录用户是："+ user.getUserName());
+            log.info("查询到的登录用户是：" + user.getUserName());
             return true;
         }
         return false;
@@ -62,12 +62,13 @@ public class UserManager {
         if (x == true){
             System.out.println("user===" + user.getSex());
             List<User>users = template.selectList("getUserInfo",user);
-            log.info("getUserInfo获取到的用户数量是",users.size());
+            log.info("getUserInfo获取到的用户数量是" + users.size());
             return users;
         }else {
             return null;
         }
     }
+
     @ApiOperation(value = "更新/删除用户接口",httpMethod = "POST")
     @RequestMapping(value = "/updateUserInfo",method = RequestMethod.POST)
     public int updataUser(HttpServletRequest request,@RequestBody User user){

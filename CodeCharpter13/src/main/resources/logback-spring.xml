@@ -38,7 +38,7 @@
         <appender-ref ref="CRAWLER_LOG"/>
     </logger-->
     <logger name="java.sql.Statement" level="DEBUG" />
-    <root level="debug">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>

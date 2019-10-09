@@ -48,7 +48,7 @@
         </where>
     </select>
     <!--获取用户列表-->
-    <select id="getUserList" parameterType="com.code.model.GetUserListCase" resultType="com.code.model.User">
+    <select id="getUserList" parameterType="com.code.model.GetUserListCase" resultType="com.code.model.User" useCache="false">
         <!-- SQL语句 -->
         select * from user
         <where>
@@ -60,6 +60,35 @@
             </if>
             <if test='null != age'>
                 AND age=#{age}
+            </if>
+        </where>
+    </select>
+    <!--获取用户详情-->
+    <select id="getUserInfo" parameterType="com.code.model.GetUserInfoCase" resultType="com.code.model.User">
+        <!-- SQL语句 -->
+        select * from user where id=#{userId}
+    </select>
+    <!--获取更新后的数据-->
+    <select id="getUpdateUserInfo" parameterType="com.code.model.UpdateUserInfoCase" resultType="com.code.model.User" useCache="false">
+        select * from user
+        <where>
+            <if test='null != userName and "" !=userName'>
+                AND userName=#{userName}
+            </if>
+            <if test='null != sex'>
+                AND sex=#{sex}
+            </if>
+            <if test='null != age'>
+                AND age=#{age}
+            </if>
+            <if test='null != permission'>
+                AND permission=#{permission}
+            </if>
+            <if test='null != isDelete'>
+                AND isDelete=#{isDelete}
+            </if>
+            <if test='null != id'>
+                AND id=#{userId}
             </if>
         </where>
     </select>

@@ -3,14 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.course">
-    <select id="login" parameterType="com.code.model.User" resultType="Integer">
+    <select id="login" parameterType="com.code.model.User" resultType="Integer" useCache="false">
         select count(*) from user  where userName=#{userName} and password=#{password}
     </select>
-    <insert id="addUser" parameterType="com.code.model.User">
+    <insert id="addUser" parameterType="com.code.model.User" flushCache="true">
         insert into user(userName,password,sex,age,permission,isDelete) values
         (#{userName},#{password},#{sex},#{age},#{permission},#{isDelete})
     </insert>
-    <select id="getUserInfo" parameterType="com.code.model.User" resultType="com.code.model.User">
+    <select id="getUserInfo" parameterType="com.code.model.User" resultType="com.code.model.User" useCache="false">
         select * from user
         <where>
             <if test='null != id'>
@@ -36,7 +36,7 @@
             </if>
         </where>
     </select>
-    <update id="updateUser" parameterType="com.code.model.User">
+    <update id="updateUserInfo" parameterType="com.code.model.User" flushCache="true">
         update user
         <trim prefix="SET" suffixOverrides=",">
             <if test="null != userName and '' != userName">
@@ -45,18 +45,19 @@
             <if test="null != password and '' != password">
                 and password=#{password}
             </if>
-            <if test="null != sex and '' != sex">
+            <if test="null != sex">
                 and sex=#{sex}
             </if>
-            <if test="null != age and '' != age">
+            <if test="null != age">
                 and age=#{age}
             </if>
-            <if test="null != permission and '' != permission">
+            <if test="null != permission">
                 and permission=#{permission}
             </if>
-            <if test="null != isDelete and '' != isDelete">
-                and isDelete=#{isDelete}
+            <if test="null != isDelete">
+                isDelete=#{isDelete}
             </if>
         </trim>
+        where id=#{id}
     </update>
 </mapper>

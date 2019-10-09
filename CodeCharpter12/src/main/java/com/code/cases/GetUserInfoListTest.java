@@ -25,6 +25,8 @@ public class GetUserInfoListTest {
         System.out.println(getUserListCase.toString());
         System.out.println(TestConfig.getUserListUrl);
 
+        //---写完接口的测试代码
+
         //发送请求
         JSONArray resultJson = getJsonResult(getUserListCase);
         Thread.sleep(2000);
