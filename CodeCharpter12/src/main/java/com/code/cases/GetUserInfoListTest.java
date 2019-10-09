@@ -5,8 +5,6 @@ import com.code.model.GetUserListCase;
 import com.code.model.User;
 import com.code.utils.ClientUtil;
 import com.code.utils.DataBaseUtil;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,15 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GetUserInfoListTest {
+
     @Test(dependsOnGroups = "loginTrue",description = "获取性别为男的用户信息")
     public void getUserInfoList() throws IOException, InterruptedException {
         SqlSession session = DataBaseUtil.getSqlSession();
         GetUserListCase getUserListCase = session.selectOne("getUserListCase",1);
         System.out.println(getUserListCase.toString());
         System.out.println(TestConfig.getUserListUrl);
-
         //---写完接口的测试代码
-
         //发送请求
         JSONArray resultJson = getJsonResult(getUserListCase);
         Thread.sleep(2000);

@@ -22,17 +22,14 @@ public class AddUserTest {
             System.out.println(addUserCase.toString());
         }
         System.out.println(TestConfig.addUserUrl);
-
         //-------写完接口的测试代码
-
         //发请求，获取结果
         String result = getResult(addUserCase);
         System.out.println(result);
-
         //验证数据
         Thread.sleep(6000);
-        session.clearCache();
-        User user = session.selectOne("addUser",addUserCase);
+        User user = session.selectOne("getAddUser",addUserCase);
+        Assert.assertNotNull(user);
         System.out.println(user.toString());
         //处理结果，就是判断返回结果是否符合预期
         Assert.assertEquals(addUserCase.getExpected(),result);

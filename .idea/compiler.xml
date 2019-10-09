@@ -35,7 +35,7 @@
       <module name="CodeCharpter10" options="-parameters" />
       <module name="CodeCharpter11" options="-parameters" />
       <module name="CodeCharpter12" options="-parameters" />
-      <module name="CodeCharpter13" options="-parameters" />
+      <module name="CodeCharpter13" options="-parameters -extdirs C:\Users\youlianz\IdeaProjects\MOOC\AutoTest_java\CodeCharpter13/lib" />
       <module name="_01" options="-parameters" />
     </option>
   </component>
