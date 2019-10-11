@@ -42,16 +42,24 @@ public class LoginTest {
 
     @Test(groups = "loginFalse",description = "登录失败")
     public void loginFalse() throws IOException {
-        SqlSession session = DataBaseUtil.getSqlSession();
-        LoginCase loginCase = session.selectOne("loginCase",2);
-        System.out.println(loginCase.toString());
-        System.out.println(TestConfig.loginUrl);
+        SqlSession session = null;
+        try {
+            session = DataBaseUtil.getSqlSession();
+            LoginCase loginCase = session.selectOne("loginCase",2);
+            System.out.println(loginCase.toString());
+            System.out.println(TestConfig.loginUrl);
 
-        //发请求，获取结果
-        String result = getResult(loginCase);
-        System.out.println(result);
-        //处理结果，就是判断返回结果是否符合预期
-        Assert.assertEquals(loginCase.getExpected(),result);
+            //发请求，获取结果
+            String result = getResult(loginCase);
+            System.out.println(result);
+            //处理结果，就是判断返回结果是否符合预期
+            Assert.assertEquals(loginCase.getExpected(),result);
+        }catch (IOException e){
+            session.rollback();
+        }finally {
+            session.close();
+        }
+
     }
     private String getResult(LoginCase loginCase) throws IOException {
         //参数组装

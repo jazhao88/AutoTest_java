@@ -18,27 +18,36 @@ import java.util.List;
 public class GetUserInfoListTest {
 
     @Test(dependsOnGroups = "loginTrue",description = "获取性别为男的用户信息")
-    public void getUserInfoList() throws IOException, InterruptedException {
-        SqlSession session = DataBaseUtil.getSqlSession();
-        GetUserListCase getUserListCase = session.selectOne("getUserListCase",1);
-        System.out.println(getUserListCase.toString());
-        System.out.println(TestConfig.getUserListUrl);
-        //---写完接口的测试代码
-        //发送请求
-        JSONArray resultJson = getJsonResult(getUserListCase);
-        Thread.sleep(2000);
-        //验证
-        List<User> userList = session.selectList(getUserListCase.getExpected(),getUserListCase);
-        for(User u : userList){
-            System.out.println("list获取的user：" + u.toString());
+    public void getUserInfoList()throws InterruptedException {
+        SqlSession session = null;
+
+        try {
+            session = DataBaseUtil.getSqlSession();
+            GetUserListCase getUserListCase = session.selectOne("getUserListCase",1);
+            System.out.println(getUserListCase.toString());
+            System.out.println(TestConfig.getUserListUrl);
+            //---写完接口的测试代码
+            //发送请求
+            JSONArray resultJson = getJsonResult(getUserListCase);
+            Thread.sleep(2000);
+            //验证
+            List<User> userList = session.selectList(getUserListCase.getExpected(),getUserListCase);
+            for(User u : userList){
+                System.out.println("list获取的user：" + u.toString());
+            }
+            JSONArray userListJson = new JSONArray(userList);
+            Assert.assertEquals(userListJson.length(), resultJson.length());
+            for (int i = 0;i<resultJson.length();i++){
+                JSONObject expect = (JSONObject)userListJson.get(i);
+                JSONObject result = (JSONObject)resultJson.get(i);
+                Assert.assertEquals(result.toString(),expect.toString());
+            }
+        } catch (IOException e) {
+            session.rollback();
+        }finally {
+            session.close();
         }
-        JSONArray userListJson = new JSONArray(userList);
-        Assert.assertEquals(userListJson.length(), resultJson.length());
-        for (int i = 0;i<resultJson.length();i++){
-            JSONObject expect = (JSONObject)userListJson.get(i);
-            JSONObject result = (JSONObject)resultJson.get(i);
-            Assert.assertEquals(result.toString(),expect.toString());
-        }
+
     }
 
     private JSONArray getJsonResult(GetUserListCase getUserListCase) throws IOException {

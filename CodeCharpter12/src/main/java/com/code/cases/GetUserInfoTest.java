@@ -18,18 +18,26 @@ import java.util.List;
 
 public class GetUserInfoTest {
     @Test(dependsOnGroups = "loginTrue",description = "根据用户id获取用户信息接口测试")
-    public void getUserInfo() throws IOException {
-        SqlSession session = DataBaseUtil.getSqlSession();
-        GetUserInfoCase getUserInfoCase = session.selectOne("getUserInfoCase",1);
-        System.out.println(getUserInfoCase.toString());
-        System.out.println(TestConfig.getUserInfoUrl);
-        //--------写完接口的测试代码
-        JSONArray resultJson = getResult(getUserInfoCase);
-        User user = session.selectOne(getUserInfoCase.getExpected(),getUserInfoCase);
-        List users = new ArrayList();
-        users.add(user);
-        JSONArray expectJson = new JSONArray(users);
-        Assert.assertEquals(resultJson.toString(),expectJson.toString());
+    public void getUserInfo() {
+        SqlSession session = null;
+        try {
+            session = DataBaseUtil.getSqlSession();
+            GetUserInfoCase getUserInfoCase = session.selectOne("getUserInfoCase",1);
+            System.out.println(getUserInfoCase.toString());
+            System.out.println(TestConfig.getUserInfoUrl);
+            //--------写完接口的测试代码
+            JSONArray resultJson = getResult(getUserInfoCase);
+            User user = session.selectOne(getUserInfoCase.getExpected(),getUserInfoCase);
+            List users = new ArrayList();
+            users.add(user);
+            JSONArray expectJson = new JSONArray(users);
+            Assert.assertEquals(resultJson.toString(),expectJson.toString());
+        } catch (IOException e) {
+            session.rollback();
+        }finally {
+            session.close();
+        }
+
     }
 
     private JSONArray getResult(GetUserInfoCase getUserInfoCase){
