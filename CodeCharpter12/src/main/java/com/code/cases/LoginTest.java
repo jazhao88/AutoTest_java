@@ -73,4 +73,6 @@ public class LoginTest {
         String result = ClientUtil.post(TestConfig.loginUrl,param.toString(),headerMap);
         return result;
     }
+
+
 }
